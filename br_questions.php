@@ -1,9 +1,11 @@
 <?php
   /* If update is clicked */
   //session_start();
-  include 'br_dbConfig.php';
-
-  if(isset($_POST['updated'])){
+  include 'dbConfig.php';
+//echo $_SESSION['qid'];
+  if(isset($_POST['updated']))
+  {
+    
     $qid = $_SESSION['qid'];
 
     /* Get all form values */
@@ -56,7 +58,7 @@
       else{
         /* All fields update */
         if (move_uploaded_file($_FILES["imgfile"]["tmp_name"], $target_file)) {
-            $updatequery="UPDATE questions SET  level=$level, qno=$qno,question='$question',
+            $updatequery="UPDATE br_questions SET  level=$level, qno=$qno,question='$question',
             answer='$ans',image ='$target_file' WHERE _qid=$qid;";
         } else {
             echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file.');</script>";
@@ -65,7 +67,7 @@
     }
     else{
       /* All fields except image, update */
-      $updatequery="UPDATE questions SET  level=$level, qno=$qno,question='$question',
+      $updatequery="UPDATE br_questions SET  level=$level, qno=$qno,question='$question',
             answer='$ans' WHERE _qid=$qid;";
     }
 
@@ -87,7 +89,7 @@
 
   if(isset($_POST['deleted'])){
     $qid = $_SESSION['qid'];
-    $delquery = "DELETE FROM questions WHERE _qid=$qid";
+    $delquery = "DELETE FROM br_questions WHERE _qid=$qid";
     $result = mysqli_query($con,$delquery) or die("Error in query");
     if($result){
     echo "<script type='text/javascript'>alert('Delete successful.');</script>";
@@ -108,8 +110,7 @@
 
   <h1>View Questions</h1>
   <?php  
-    //include 'config.php';
-    $query = "SELECT * FROM questions";
+    $query = "SELECT * FROM br_questions";
     $res_ques=mysqli_query($con,$query) or die("Error in query");
     echo "<table class='table' width='100%'>
     <tr>

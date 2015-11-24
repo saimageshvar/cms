@@ -1,6 +1,6 @@
 <?php  
-  //session_start();
-  include 'br_dbConfig.php';
+  @session_start();
+  include 'dbConfig.php';
   include "header.php";
 
   /* Set SESSION var to avoid loss of GET request 
@@ -11,9 +11,10 @@
     if(isset($_GET['qid'])) $_SESSION['qid']=$_GET['qid'];
     $qid=$_SESSION['qid'];
 
-    $selectquery = "SELECT * FROM questions WHERE _qid=$qid";
+    $selectquery = "SELECT * FROM br_questions WHERE _qid=$qid";
     $result = mysqli_query($con,$selectquery) or die("Error in query");
     $row = mysqli_fetch_array($result);
+   
   } 
 ?>
 
@@ -56,7 +57,9 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </a>
-            <button class="btn btn-primary" type="submit" value="Update" name="updated"  >Submit</button>     
+           
+            <input type="submit" class="btn btn-default" value="Update" name="updated">
+            
           </center>
           <br/>  <br/>  <br/>
        </form>

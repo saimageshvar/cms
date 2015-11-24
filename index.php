@@ -12,10 +12,10 @@ else
 if( isset($_POST["email"]) )
 {
     
-    include "login_config.php";
+    include "dbConfig.php";
     $email = $_POST["email"];
     $password = $_POST["password"];
-    $query = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+    $query = "SELECT * FROM admin WHERE email = '$email' AND password = '$password'";
     $result = mysqli_query($con, $query);
     if($result)
     {        
