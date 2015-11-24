@@ -20,7 +20,7 @@
   <div class="input-group">
       <div class="input-group-addon"><i class="icon-ok-sign"></i></div>
       <input type="text" name="answer" class="form-control" id="answer" placeholder="Answer" required/>
-  </div><br/>   <br/>
+  </div><br/>
   <div class="input-group">
       <div class="input-group-addon">  <i class="icon-picture"></i></div>
       <input type="file" name="imgfile" id="imgfile" >  

@@ -21,5 +21,21 @@
   <div class="col-sm-3">  	<img src="img/unesco.png" class="unesco">  </div>
 </div>
 <div class="header">
-	<center>  	<h1>k!16 Online Events CMS  </h1>  </center>
+	
+
+  <?php 
+  if(isset($_SESSION['type']))
+  {
+    echo "
+<div class='row'>
+  <div class='col-md-10'><center>    <h1 style='padding-left: 260px;'>k!16 Online Events CMS  </h1>    </div>
+  <div class='col-md-2'><a href='logout.php'><button class='btn btn-primary' style='margin-top:25px'>Logout</button></a></div>
+</div>
+";
+  }
+  else
+  {
+    echo "<center>    <h1>k!16 Online Events CMS  </h1>    ";
+  }
+  ?>
 </div>

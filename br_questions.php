@@ -1,6 +1,6 @@
 <?php
   /* If update is clicked */
-  session_start();
+  //session_start();
   include 'br_dbConfig.php';
 
   if(isset($_POST['updated'])){

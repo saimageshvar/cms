@@ -1,5 +1,5 @@
 <?php  
-  session_start();
+  //session_start();
   include 'br_dbConfig.php';
   include "header.php";
 
