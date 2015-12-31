@@ -12,6 +12,7 @@
     $qid=$_SESSION['qid'];
 
     $selectquery = "SELECT * FROM br_questions WHERE _qid=$qid";
+    $con=mysqli_connect("$host","$mysql_u","$mysql_p","$mysql_db");
     $result = mysqli_query($con,$selectquery) or die("Error in query");
     $row = mysqli_fetch_array($result);
    

@@ -2,6 +2,7 @@
   /* If update is clicked */
   //session_start();
   include 'dbConfig.php';
+  $con=mysqli_connect("$host","$mysql_u","$mysql_p","$mysql_db");
 //echo $_SESSION['qid'];
   if(isset($_POST['updated']))
   {
@@ -110,6 +111,7 @@
 
   <h1>View Questions</h1>
   <?php  
+  $con=mysqli_connect("$host","$mysql_u","$mysql_p","$mysql_db");
     $query = "SELECT * FROM br_questions";
     $res_ques=mysqli_query($con,$query) or die("Error in query");
     echo "<table class='table' width='100%'>
@@ -141,4 +143,4 @@
     }
     echo "</table>";
   ?>
-</div>
+</div> 

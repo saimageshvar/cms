@@ -1,6 +1,5 @@
-
 <head>
-   <title>Xceed - Kurukshetra 2016</title>
+   <title>CMS | k!16</title>
    <meta>
    <link href="css/bootstrap.min.css" rel="stylesheet">
    <script src="js/jquery.min.js"></script>
@@ -9,7 +8,6 @@
    <link rel="stylesheet" type="text/css" href="css/styles.css">
    <link rel="stylesheet" type="text/css" href="css/added.css">
 </head>
-
 <body>
 <div class="row">
   <div class="col-sm-3">  	<img src="img/ceg.png" class="ceg">  </div>
@@ -21,9 +19,7 @@
   <div class="col-sm-3">  	<img src="img/unesco.png" class="unesco">  </div>
 </div>
 <div class="header">
-	
-
-  <?php 
+<?php 
   if(isset($_SESSION['type']))
   {
     echo "

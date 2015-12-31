@@ -13,6 +13,7 @@ if( isset($_POST["email"]) )
 {
     
     include "dbConfig.php";
+    $con=mysqli_connect($host,$mysql_u,$mysql_p,$mysql_db);
     $email = $_POST["email"];
     $password = $_POST["password"];
     $query = "SELECT * FROM admin WHERE email = '$email' AND password = '$password'";
@@ -34,6 +35,7 @@ else
 {
   include "header.php";
   include "login.php";
+  //include "check.php";
 }
 
 ?>
