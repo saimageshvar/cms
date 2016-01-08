@@ -45,12 +45,12 @@
 							$url=mysqli_fetch_assoc($urls);
 							for($i=0;$i< $count;$i++)
 							{
-								
+							$serv="localhost/k!/cms/";	
 							?>
 							
 							<img id="<?php echo 'i'.$level.'_'.$i ?>" src="<?php echo $img_path.$url['img'.$i] ?>" height="75" width="75" />
-							<input type="file" name="<?php echo $level.'_'.$i ?>" />
-							<input  type="button" value="remove" id="<?php echo 'b'.$level.'_'.$i ?>" onclick="rem('<?php echo $level.'_'.$i ?>','<?php echo $url['img'.$i] ?>','<?php echo $level ?>','<?php echo $i ?>'); "/>
+							<input type="file" name="<?php echo $level.'_'.$i ?>"  id="<?php echo $level.'_'.$i ?>"/>
+							<input  type="button" value="remove" id="<?php echo 'b'.$level.'_'.$i ?>" onclick="rem('<?php echo $level.'_'.$i ?>','<?php echo '/'.$url['img'.$i] ?>','<?php echo $level ?>','<?php echo $i ?>'); "/>
 							<input  type="hidden" id="img_url" value="'<?php echo $img_path.$url['img'.$i] ?>'" />
 							<br/>
 							
@@ -90,7 +90,7 @@
 						cnt=cnt-1;
 						document.getElementById("count").value=cnt;
 						document.getElementById("hiddenCount").value=cnt;
-						window.location="deleteImage.php?url="+url+"&level="+level+"&id="+id+"&count="+cnt;
+						window.location="ros_deleteImage.php?url="+url+"&level="+level+"&id="+id+"&count="+cnt;
 						
 					}
 				</script>

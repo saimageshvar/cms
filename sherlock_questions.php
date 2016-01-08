@@ -15,12 +15,12 @@
     $qno=intval(mysqli_real_escape_string($con,$_POST['qno']));
     $question=mysqli_real_escape_string($con,$_POST['question']);
     $ans=mysqli_real_escape_string($con,$_POST['answer']);
-	
+	$type=mysqli_real_escape_string($con,$_POST['type']);
 
 
 
     /* Image Upload */
-    $target_dir = "img/";
+    $target_dir = "img/sherlock/";
     $target_file = $target_dir . basename($_FILES["imgfile"]["name"]);
     $uploadOk = 1;
 
@@ -60,8 +60,8 @@
       else{
         /* All fields update */
         if (move_uploaded_file($_FILES["imgfile"]["tmp_name"], $target_file)) {
-            $updatequery="UPDATE br_questions SET  level=$level, qno=$qno,question='$question',
-            answer='$ans',image ='$target_file' WHERE _qid=$qid;";
+            $updatequery="UPDATE sherlock_questions SET  level=$level, qno=$qno,question='$question',
+            answer='$ans',type='$type',image ='$target_file' WHERE _qid=$qid;";
         } else {
             echo "<script type='text/javascript'>alert('Sorry, there was an error uploading your file.');</script>";
         }
@@ -69,8 +69,8 @@
     }
     else{
       /* All fields except image, update */
-      $updatequery="UPDATE br_questions SET  level=$level, qno=$qno,question='$question',
-            answer='$ans' WHERE _qid=$qid;";
+      $updatequery="UPDATE sherlock_questions SET  level=$level, qno=$qno,question='$question',
+            answer='$ans',type='$type' WHERE _qid=$qid;";
     }
 
     /* Success and redirect to View all questions */
@@ -91,7 +91,7 @@
 
   if(isset($_POST['deleted'])){
     $qid = $_SESSION['qid'];
-    $delquery = "DELETE FROM br_questions WHERE _qid=$qid";
+    $delquery = "DELETE FROM sherlock_questions WHERE _qid=$qid";
     $result = mysqli_query($con,$delquery) or die("Error in query");
     if($result){
     echo "<script type='text/javascript'>alert('Delete successful.');</script>";
@@ -113,7 +113,7 @@
   <h1>View Questions</h1>
   <?php  
   $con=mysqli_connect("$host","$mysql_u","$mysql_p","$mysql_db");
-    $query = "SELECT * FROM br_questions";
+    $query = "SELECT * FROM sherlock_questions";
     $res_ques=mysqli_query($con,$query) or die("Error in query");
     echo "<table class='table' width='100%'>
     <tr>
@@ -121,6 +121,7 @@
       <th>Q No</th>
       <th>Question</th>
       <th>Answer</th>
+	  <th>Type</th>
       <th>Image</th>
       <th>Edit</th>
       <th>Delete</th>
@@ -131,14 +132,16 @@
         $qno=$row['qno'];
         $question=$row['question'];
         $answer=$row['answer'];
+		$type=$row['type'];
         $image=$row['image'];
         echo "<tr>
           <td>".$level."</td>
           <td>".$qno."</td>
           <td>".$question."</td>
           <td>".$answer."</td>
+		  <td>".$type."</td>
           <td><a href='./".$image."'>Click to see image</td>
-          <td><a href='br_edit_question.php?qid=".$qid."'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>
+          <td><a href='sherlock_edit_question.php?qid=".$qid."'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>
           <td><a href='delete.php?qid=".$qid."'> <span class='  glyphicon glyphicon-trash' aria-hidden='true'></span> </a></td>
         </tr>";
     }

@@ -7,5 +7,5 @@
 	if(mysqli_query($conn,$block_user))
 		echo "blocked";
 	mysqli_close($conn);
-		//echo "<meta http-equiv='refresh' content='0;index.php'/>";
+		echo "<meta http-equiv='refresh' content='0;index.php'/>";
 ?>
