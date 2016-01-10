@@ -4,7 +4,7 @@
 	{
 		if($conn)
 		{
-			$query = sprintf("select level from ros_users where k_id='%s';",$_GET['k_id']);
+			$query = sprintf("select level from ros_users where k_id='%s';",$_POST['k_id']);
 			$result=mysqli_fetch_assoc(mysqli_query($conn,$query));
 			$level=$result['level'];
 			$query=sprintf("select level,img_count,img0,img1,img2,img3 from ros_questions where level=%s;",$level);
